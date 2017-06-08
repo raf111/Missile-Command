@@ -5,7 +5,7 @@ jQuery(function() {
 
     // Global Variables
     var land_page_removed = 0;
-    var score = 1;
+    var score = 0;
     var high_score = 0;
     var level = 1;
     var cities_intact = 6;
@@ -127,18 +127,24 @@ jQuery(function() {
             high_score = score;
             var high_score_box = $('<div>');
             high_score_box.css({
-                width: '600px',
-                height: '500px',
-                backgroundColor: 'white',
+                width: '100%',
+                height: '100%',
                 whiteSpace: 'pre-wrap',
                 color: 'yellow',
-                fontSize: '108px'
+                fontSize: '108px',
+                display: 'flex',
+                position: 'fixed',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center'
             })
             high_score_box.text('NEW HIGH SCORE!!!');
             score_page.detach();
             high_score_page.append(high_score_box);
+            body.append(high_score_page);
             setInterval(function() {
-                high_score_page.remove();
+                high_score_page.detach();
+                body.append(score_page);
             }, 3000);
         }
     }
