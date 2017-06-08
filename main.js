@@ -5,7 +5,7 @@ jQuery(function() {
 
     // Global Variables
     var land_page_removed = 0;
-    var score = 0;
+    var score = 1;
     var high_score = 0;
     var level = 1;
     var cities_intact = 6;
@@ -25,7 +25,6 @@ jQuery(function() {
     score_page.css({
         width: '100%',
         height: '100%'
-            //backgroundColor: 'white'
     })
 
     var high_score_page = $('<div>');
@@ -146,6 +145,7 @@ jQuery(function() {
                 high_score_page.detach();
                 body.append(score_page);
             }, 3000);
+            clearInterval(setInterval);
         }
     }
 
