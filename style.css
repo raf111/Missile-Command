@@ -236,10 +236,34 @@ body {
 	transform: translateX(810px) translateY(-470px);
 }
 
-.missile {
+.missile_1 {
 	background-image: url('images/rocket.png');
 	background-color: black;
-	background-size: 15px;
-	width: 10px;
-	height: 10px;
+	background-size: 9px;
+	width: 6px;
+	height: 6px;
+	transform: translateX(35px);
 }
+
+.missile_2 {
+	background-image: url('images/rocket.png');
+	background-color: black;
+	background-size: 9px;
+	width: 6px;
+	height: 6px;
+	transform: translateX(35px);
+}
+
+.missile_3 {
+	background-image: url('images/rocket.png');
+	background-color: black;
+	background-size: 9px;
+	width: 6px;
+	height: 6px;
+	transform: translateX(35px);
+}
+
+
+
+
+

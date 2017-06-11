@@ -108,9 +108,29 @@ jQuery(function() {
     silo_3.addClass('silo_3');
     ground.append(silo_3);
 
-    var missile = $('<div>');
-    missile.addClass('missile');
-    silo_1.append(missile);
+    for (var i = 1; i < 11; i++) {
+        var missile_1 = $('<div>');
+        missile_1.addClass('missile_1');
+        var missile_id_1 = 'A' + i.toString();
+        missile_1.attr('id', missile_id_1);
+        silo_1.append(missile_1);
+    }
+
+    for (var i = 1; i < 11; i++) {
+        var missile_2 = $('<div>');
+        missile_2.addClass('missile_2');
+        var missile_id_2 = 'B' + i.toString();
+        missile_2.attr('id', missile_id_2);
+        silo_2.append(missile_2);
+    }
+
+    for (var i = 1; i < 11; i++) {
+        var missile_3 = $('<div>');
+        missile_3.addClass('missile_3');
+        var missile_id_3 = 'C' + i.toString();
+        missile_3.attr('id', missile_id_3);
+        silo_3.append(missile_3);
+    }
 
     var menu_box = $('<div>');
     menu_box.addClass('menu_box');
@@ -262,14 +282,14 @@ jQuery(function() {
         $(gun_btn_one).on("click", function() {
             console.log('gun works');
             $(gun_btn_one).css("background", "yellow");
-            $(silo_1).css( {
-            	backgroundImage: 'url(images/yellow_launcher.png)'
+            $(silo_1).css({
+                backgroundImage: 'url(images/yellow_launcher.png)'
             })
-            $(silo_2).css( {
-            	backgroundImage: 'url(images/red_launcher.png)'
+            $(silo_2).css({
+                backgroundImage: 'url(images/red_launcher.png)'
             })
-            $(silo_3).css( {
-            	backgroundImage: 'url(images/red_launcher.png)'
+            $(silo_3).css({
+                backgroundImage: 'url(images/red_launcher.png)'
             })
             $(gun_btn_one).css("color", "black");
             $(gun_btn_two).css("background", "#006400");
@@ -283,14 +303,14 @@ jQuery(function() {
         (gun_btn_two).on("click", function() {
             console.log('gun works');
             $(gun_btn_two).css("background", "yellow");
-            $(silo_1).css( {
-            	backgroundImage: 'url(images/red_launcher.png)'
+            $(silo_1).css({
+                backgroundImage: 'url(images/red_launcher.png)'
             })
-            $(silo_2).css( {
-            	backgroundImage: 'url(images/yellow_launcher.png)'
+            $(silo_2).css({
+                backgroundImage: 'url(images/yellow_launcher.png)'
             })
-            $(silo_3).css( {
-            	backgroundImage: 'url(images/red_launcher.png)'
+            $(silo_3).css({
+                backgroundImage: 'url(images/red_launcher.png)'
             })
             $(gun_btn_two).css("color", "black");
             $(gun_btn_one).css("background", "#006400");
@@ -303,14 +323,14 @@ jQuery(function() {
         (gun_btn_three).on("click", function() {
             console.log('gun works');
             $(gun_btn_three).css("background", "yellow");
-            $(silo_1).css( {
-            	backgroundImage: 'url(images/red_launcher.png)'
+            $(silo_1).css({
+                backgroundImage: 'url(images/red_launcher.png)'
             })
-            $(silo_2).css( {
-            	backgroundImage: 'url(images/red_launcher.png)'
+            $(silo_2).css({
+                backgroundImage: 'url(images/red_launcher.png)'
             })
-            $(silo_3).css( {
-            	backgroundImage: 'url(images/yellow_launcher.png)'
+            $(silo_3).css({
+                backgroundImage: 'url(images/yellow_launcher.png)'
             })
             $(gun_btn_three).css("color", "black");
             $(gun_btn_one).css("background", "#006400");
