@@ -12,7 +12,7 @@ body {
 }
 
 .intro_tag {
-    color: yellow;
+    color: white;
     width: 600px;
     height: 165px;
     font-size: 72px;
@@ -32,12 +32,25 @@ body {
     height: 50px;
     margin-top: 20px;
     margin-bottom: 10px;
-    background-color: yellow;
+    background-color: white;
     border: 5px;
     border-style: solid;
     border-color: red;
-    color: blue;
+    color: black;
     font-size: 24px;
+}
+
+.rule_page {
+    font-size: 36px;
+    color: white;
+}
+
+.rules {
+    text-align: center;
+    display: inline block;
+    margin: 0 auto;
+    margin-left: 200px;
+    margin-right: 200px;
 }
 
 .high_score_page {
@@ -65,7 +78,7 @@ body {
     display: inline block;
     margin: 0 auto;
     text-align: center;
-    color: yellow;
+    color: white;
 }
 
 .score_title {
@@ -98,17 +111,29 @@ body {
     height: 50px;
     width: 100%;
     background-color: gray;
-    color: blue;
+    color: white;
     font-weight: 30px;
     font-size: 24px;
 }
 
 .gun_btn {
-    height: 5vh;
+    height: 10vh;
     width: 5vw;
     border-radius: 20px;
     background-color: #006400;
-    float: center;
+    display: inline block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 50px;
+    font-size: 36px;
+    color: white;
+}
+
+.gun_btn_one {
+    margin-top: 100px;
 }
 
 .ground {
@@ -126,33 +151,95 @@ body {
     text-align: center;
     top: 20%;
     right: 5%;
-    color: yellow;
-    background-color: gray;
+    color: black;
     position: relative;
 }
 
 .ingame_box_menu_btn {
-	display: inline block;
+    display: inline block;
     display: table;
     margin: 0 auto;
-    width: 200px;
-    height: 50px;
     margin-top: 20px;
     margin-bottom: 10px;
-    background-color: yellow;
+    background-color: white;
     border: 5px;
     border-style: solid;
     border-color: red;
-    color: blue;
+    width: 200px;
+    height: 50px;
+    color: black;
     font-size: 24px;
 }
 
+.back_btn {
+    background-image: url(images/back_button.png);
+    background-color: black;
+    background-size: 100px;
+    width: 100px;
+    height: 100px;
+}
 
+.city {
+    background-image: url(images/city-town-png-image-6.png);
+    background-color: black;
+    background-size: 100px;
+    width: 50px;
+    height: 50px;
+    background-image: contain;
+}
 
+#city_1 {
+    transform: translateY(-40px) translateX(120px);
+}
 
+#city_2 {
+    transform: translateY(-90px) translateX(220px);
+}
 
+#city_3 {
+    transform: translateY(-140px) translateX(320px);
+}
 
+#city_4 {
+    transform: translateY(-190px) translateX(530px);
+}
 
+#city_5 {
+    transform: translateY(-240px) translateX(630px);
+}
 
+#city_6 {
+    transform: translateY(-290px) translateX(730px);
+}
 
+.silo_1 {
+	height: 60px;
+	width: 80px;
+	background-size: 80px;
+	background-image: url('images/red_launcher.png');
+	transform: translateX(10px) translateY(-350px);
+}
 
+.silo_2 {
+	height: 60px;
+	width: 80px;
+	background-size: 80px;
+	background-image: url('images/red_launcher.png');
+	transform: translateX(410px) translateY(-410px);
+}
+
+.silo_3 {
+	height: 60px;
+	width: 80px;
+	background-size: 80px;
+	background-image: url('images/red_launcher.png');
+	transform: translateX(810px) translateY(-470px);
+}
+
+.missile {
+	background-image: url('images/rocket.png');
+	background-color: black;
+	background-size: 15px;
+	width: 10px;
+	height: 10px;
+}
