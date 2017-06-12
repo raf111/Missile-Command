@@ -213,57 +213,98 @@ body {
 }
 
 .silo_1 {
-	height: 60px;
-	width: 80px;
-	background-size: 80px;
-	background-image: url('images/red_launcher.png');
-	transform: translateX(10px) translateY(-350px);
+    height: 60px;
+    width: 80px;
+    background-size: 80px;
+    background-image: url('images/red_launcher.png');
+    transform: translateX(10px) translateY(-350px);
 }
 
 .silo_2 {
-	height: 60px;
-	width: 80px;
-	background-size: 80px;
-	background-image: url('images/red_launcher.png');
-	transform: translateX(410px) translateY(-410px);
+    height: 60px;
+    width: 80px;
+    background-size: 80px;
+    background-image: url('images/red_launcher.png');
+    transform: translateX(410px) translateY(-410px);
 }
 
 .silo_3 {
-	height: 60px;
-	width: 80px;
-	background-size: 80px;
-	background-image: url('images/red_launcher.png');
-	transform: translateX(810px) translateY(-470px);
+    height: 60px;
+    width: 80px;
+    background-size: 80px;
+    background-image: url('images/red_launcher.png');
+    transform: translateX(810px) translateY(-470px);
 }
 
 .missile_1 {
-	background-image: url('images/rocket.png');
-	background-color: black;
-	background-size: 9px;
-	width: 6px;
-	height: 6px;
-	transform: translateX(35px);
+    background-image: url('images/rocket.png');
+    background-color: black;
+    background-size: 9px;
+    width: 6px;
+    height: 6px;
+    transform: translateX(35px);
 }
 
 .missile_2 {
-	background-image: url('images/rocket.png');
-	background-color: black;
-	background-size: 9px;
-	width: 6px;
-	height: 6px;
-	transform: translateX(35px);
+    background-image: url('images/rocket.png');
+    background-color: black;
+    background-size: 9px;
+    width: 6px;
+    height: 6px;
+    transform: translateX(35px);
 }
 
 .missile_3 {
-	background-image: url('images/rocket.png');
-	background-color: black;
-	background-size: 9px;
-	width: 6px;
-	height: 6px;
-	transform: translateX(35px);
+    background-image: url('images/rocket.png');
+    background-color: black;
+    background-size: 9px;
+    width: 6px;
+    height: 6px;
+    transform: translateX(35px);
 }
 
+.explosion {
+    width: 60px;
+    height: 60px;
+    background-color: #8B0000;
+    border-radius: 60px;
+    position: relative;
+}
 
+.game_box {
+    width: 90vw;
+    height: 540px;
+    background-color: black;
+    float: left;
+}
 
+.line {
+    background-color: white;
+    width: 2px;
+    /*height: 400px;*/
+    position: relative;
+    overflow: hidden;
+    float: left;
+}
 
+.level_page {
+    width: 600px;
+    height: 500px;
+    display: inline block;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 72px;
+    transform: translateY(200px);
+}
 
+.game_over_page {
+    width: 600px;
+    height: 500px;
+    display: inline block;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    font-size: 72px;
+    transform: translateY(200px);
+}
