@@ -124,7 +124,7 @@ body {
     display: inline block;
     margin: 0 auto;
     margin-top: 20px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     text-align: center;
     vertical-align: center;
     line-height: 50px;
@@ -133,7 +133,7 @@ body {
 }
 
 .gun_btn_one {
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 .ground {
@@ -263,14 +263,6 @@ body {
     transform: translateX(35px);
 }
 
-.explosion {
-    width: 60px;
-    height: 60px;
-    background-color: #8B0000;
-    border-radius: 60px;
-    position: relative;
-}
-
 .game_box {
     width: 90vw;
     height: 540px;
@@ -281,7 +273,6 @@ body {
 .line {
     background-color: white;
     width: 2px;
-    /*height: 400px;*/
     position: relative;
     overflow: hidden;
     float: left;
@@ -308,3 +299,28 @@ body {
     font-size: 72px;
     transform: translateY(200px);
 }
+
+.explosion {
+    width: 60px;
+    height: 60px;
+    background-image: url('images/580b585b2edbce24c47b264f.png');
+    background-size: 60px;
+    border-radius: 60px;
+}
+
+.score_keeper {
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	font-size: 36px;
+	color: white;
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+

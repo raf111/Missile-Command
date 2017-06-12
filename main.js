@@ -81,6 +81,10 @@ jQuery(function() {
     game_menu_btn.text("STOP");
     nav_bar.append(game_menu_btn);
 
+    var score_keeper = $('<div>');
+    score_keeper.addClass('score_keeper');
+    nav_bar.append(score_keeper)
+
     var gun_btn_one = $('<div>');
     gun_btn_one.addClass('gun_btn');
     gun_btn_one.addClass('gun_btn_one');
@@ -253,13 +257,15 @@ jQuery(function() {
                 game_page.detach();
                 body.append(game_over_page);
                 setInterval(function() {
-                	game_over_page.detach();
+                    game_over_page.detach();
                 }, 3000)
-                getHighScore();/*
-                body.append(score_page);
-                score_title.text('Your score: ' + score + '!');
-                game_info.text('Level: ' + level + '\n \n Cities Intact: ' + cities + '\n \n Your High Score: ' + high_score);
-           */ }
+                getHighScore();
+                /*
+                                body.append(score_page);
+                                score_title.text('Your score: ' + score + '!');
+                                game_info.text('Level: ' + level + '\n \n Cities Intact: ' + cities + '\n \n Your High Score: ' + high_score);
+                           */
+            }
         })
     }
 
@@ -401,15 +407,36 @@ jQuery(function() {
         gun_three_glow();
     }
 
+    var removeMissiles_1 = function() {
+        for (var i = 0; i < 10; i++) {
+            var missile_id_1 = 'A' + i.toString();
+            $('#' + missile_id_1).remove();
+        }
+    }
+
+    var removeMissiles_2 = function() {
+        for (var i = 0; i < 10; i++) {
+            var missile_id_2 = 'B' + i.toString();
+            $('#' + missile_id_2).remove();
+        }
+    }
+
+    var removeMissiles_3 = function() {
+        for (var i = 0; i < 10; i++) {
+            var missile_id_3 = 'C' + i.toString();
+            $('#' + missile_id_3).remove();
+        }
+    }
+
     var burnCity = function() {
         var attack_one = setInterval(function() {
             var line_1_height = $('#line1').height();
             //console.log(line_1_height);
             if (line_1_height > 515) {
                 silo_1.css({
-                        backgroundImage: 'url(images/Fire-PNG-image-1.png)'
-                    })
-                    //$('#line1').stop();
+                    backgroundImage: 'url(images/Fire-PNG-image-1.png)'
+                })
+                removeMissiles_1();
                 clearInterval(attack_one);
             }
         })
@@ -461,6 +488,7 @@ jQuery(function() {
                 silo_2.css({
                     backgroundImage: 'url(images/Fire-PNG-image-1.png)'
                 })
+                removeMissiles_2();
                 clearInterval(attack_five);
             }
         })
@@ -511,6 +539,7 @@ jQuery(function() {
                 silo_3.css({
                     backgroundImage: 'url(images/Fire-PNG-image-1.png)'
                 })
+                removeMissiles_3();
                 clearInterval(attack_nine);
             }
         })
@@ -622,6 +651,24 @@ jQuery(function() {
         });
     }
 
+    var explosion = $('<div>');
+    explosion.addClass('explosion');
+
+    $(game_box).on('click', function(event) {
+        console.log("pageX: " + event.pageX + ", pageY: " + event.pageY);
+        $(explosion).css('top', event.pageY);
+        $(explosion).css('left', event.pageX);
+        //$(explosion).css('background', url('images/580b585b2edbce24c47b264f.png'));
+        game_page.append(explosion);
+    })
+
+    setInterval(function() {
+        var trackScore = function() {
+            score_keeper.text('Score: ' + score);
+        }
+    },5000)
+
+
     /* Function Calls */
     appender();
     getLandingPage();
@@ -633,4 +680,5 @@ jQuery(function() {
     burnCity();
     clearLaunchers();
     sayGameOver();
+    trackScore();
 });
