@@ -7,13 +7,16 @@ jQuery(function() {
     var land_page_removed = 0;
     var score = 0;
     var high_score = 0;
-    var level = 100;
+    var level = 1;
     var line_speed = 10000 / (level * 0.5) + 5000;
     var cities = 6;
     var nextLine = 1000 / level;
     var counter = 0
     var need_new_level = false;
     var gameOver = false;
+    var end_of_game;
+    var checkCounter;
+    var menu_box_interval;
 
 
     /* Variable References */
@@ -51,6 +54,7 @@ jQuery(function() {
     // Score Page
     var score_page = $('<div>');
     score_page.addClass('score_page');
+    score_page.append(back_btn);
 
     var score_box = $('<div>');
     score_box.addClass('score_box');
@@ -186,11 +190,12 @@ jQuery(function() {
     }
 
     var checkForClearance = function() {
-        var checkCounter = setInterval(function() {
+        checkCounter = setInterval(function() {
             if (cities == 0) {
                 gameOver = true;
                 console.log('Game Over');
                 console.log(gameOver);
+                clearInterval(checkCounter);
             } else if (counter == 3) {
                 need_new_level = true;
                 console.log(counter);
@@ -237,11 +242,11 @@ jQuery(function() {
             setTimeout(function() {
                 high_score_page.detach();
             }, 2000);
+            window.clearInterval(end_of_game);
         }
     }
 
     var getScorePage = function() {
-        getHighScore();
         body.append(score_page);
         score_title.text('Your score: ' + score + '!');
         game_info.text('Level: ' + level + '\n \n Cities Intact: ' + cities + '\n \n Your High Score: ' + high_score);
@@ -249,22 +254,34 @@ jQuery(function() {
             removeScorePage();
             createGame();
         }, 1000)
+        score_page.append(back_btn);
+        back_btn.css({ transform: 'translateY(-600px)' });
+        $(back_btn).click(function() {
+            score_page.detach();
+            body.append(landing_page);
+            back_btn.detach();
+        })
     }
 
     var sayGameOver = function() {
-        setInterval(function() {
+        end_of_game = setInterval(function() {
             if (gameOver == true) {
                 game_page.detach();
                 body.append(game_over_page);
-                setInterval(function() {
+                setTimeout(function() {
                     game_over_page.detach();
+                    getHighScore();
+                    setTimeout(function() {
+                        body.append(score_page);
+                        score_title.text('Your score: ' + score + '!');
+                        game_info.text('Level: ' + level + '\n \n Cities Intact: ' + cities + '\n \n Your High Score: ' + high_score);
+                    }, 3000)
                 }, 3000)
-                getHighScore();
-                /*
-                                body.append(score_page);
-                                score_title.text('Your score: ' + score + '!');
-                                game_info.text('Level: ' + level + '\n \n Cities Intact: ' + cities + '\n \n Your High Score: ' + high_score);
-                           */
+
+                // cities = 6;
+                gameOver = false;
+
+
             }
         })
     }
@@ -273,36 +290,43 @@ jQuery(function() {
         score_page.detach();
     }
 
-    var resumeGame = function() {
-        $('#5').click(function() {
-            menu_box.detach();
-        })
-    }
-
-    var restartGame = function() {
-        $('#6').click(function() {
-            alert('works');
-        })
-    }
-
-    var backToMainMenu = function() {
-        $('#7').click(function() {
-            menu_box.detach();
-            game_page.detach();
-            body.append(landing_page);
-        })
-    }
-
     var bringInGameMenu = function() {
         $(game_menu_btn).click(function() {
+            menu_box_interval = setInterval(function() {
+                $(game_box).stop();
+                $('#line1').stop();
+                $('#line2').stop();
+                $('#line3').stop();
+                $('#line4').stop();
+                $('#line5').stop();
+                $('#line6').stop();
+                $('#line7').stop();
+                $('#line8').stop();
+                $('#line9').stop();
+            }, 100)
+
             game_box.append(menu_box);
             console.log('Menu');
             $('#5').text('RESUME');
             $('#6').text('RESTART');
             $('#7').text('MAIN MENU');
-            resumeGame();
-            restartGame();
-            backToMainMenu();
+
+            $('#5').click(function() {
+                menu_box.detach();
+                clearInterval(menu_box_interval);
+            })
+            $('#6').click(function() {
+                menu_box.detach();
+                clearInterval(menu_box_interval);
+                game_page.detach();
+                body.append(landing_page);
+            })
+            $('#7').click(function() {
+                menu_box.detach();
+                clearInterval(menu_box_interval);
+                game_page.detach();
+                body.append(landing_page);
+            })
         })
     }
 
@@ -314,7 +338,7 @@ jQuery(function() {
         $('#1').click(function() {
             removeLandingPage();
             if (score > high_score) {
-                getHighScore();
+                // getHighScore();
                 setTimeout(function() {
                     getScorePage();
                 }, 2000);
@@ -408,21 +432,24 @@ jQuery(function() {
     }
 
     var removeMissiles_1 = function() {
-        for (var i = 0; i < 10; i++) {
+        for (var i = 1; i < 11; i++) {
+            console.log('missile A', i);
             var missile_id_1 = 'A' + i.toString();
-            $('#' + missile_id_1).remove();
+            var missile_test = $('#' + missile_id_1);
+            console.log(missile_test);
+            missile_test.remove();
         }
     }
 
     var removeMissiles_2 = function() {
-        for (var i = 0; i < 10; i++) {
+        for (var i = 1; i < 11; i++) {
             var missile_id_2 = 'B' + i.toString();
             $('#' + missile_id_2).remove();
         }
     }
 
     var removeMissiles_3 = function() {
-        for (var i = 0; i < 10; i++) {
+        for (var i = 1; i < 11; i++) {
             var missile_id_3 = 'C' + i.toString();
             $('#' + missile_id_3).remove();
         }
@@ -653,20 +680,87 @@ jQuery(function() {
 
     var explosion = $('<div>');
     explosion.addClass('explosion');
+    score_keeper.text('Score: ' + score);
 
     $(game_box).on('click', function(event) {
         console.log("pageX: " + event.pageX + ", pageY: " + event.pageY);
         $(explosion).css('top', event.pageY);
         $(explosion).css('left', event.pageX);
-        //$(explosion).css('background', url('images/580b585b2edbce24c47b264f.png'));
-        game_page.append(explosion);
+        explosion.fadeIn(500, function() {
+            opacity: '1'
+            game_page.append(explosion);
+        });
+        setTimeout(function() {
+            explosion.fadeOut(500);
+        }, 500)
+
+        var position_1 = $('#line1').position();
+        var position_2 = $('#line2').position();
+        var position_3 = $('#line3').position();
+        var position_4 = $('#line4').position();
+        var position_5 = $('#line5').position();
+        var position_6 = $('#line6').position();
+        var position_7 = $('#line7').position();
+        var position_8 = $('#line8').position();
+        var position_9 = $('#line9').position();
+
+        if (event.pageX > position_1.left - 50 && event.pageX < position_1.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_1.left)
+            $('#line1').detach();
+        }
+        if (event.pageX > position_2.left - 50 && event.pageX < position_2.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_2.left)
+            $('#line2').detach();
+        }
+        if (event.pageX > position_3.left - 50 && event.pageX < position_3.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_3.left)
+            $('#line3').detach();
+        }
+        if (event.pageX > position_4.left - 50 && event.pageX < position_4.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_4.left)
+            $('#line4').detach();
+        }
+        if (event.pageX > position_5.left - 50 && event.pageX < position_5.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_5.left)
+            $('#line5').detach();
+        }
+        if (event.pageX > position_6.left - 50 && event.pageX < position_6.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_6.left)
+            $('#line6').detach();
+        }
+        if (event.pageX > position_7.left - 50 && event.pageX < position_7.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_7.left)
+            $('#line7').detach();
+        }
+        if (event.pageX > position_8.left - 50 && event.pageX < position_8.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_8.left)
+            $('#line8').detach();
+        }
+        if (event.pageX > position_9.left - 50 && event.pageX < position_9.left + 50) {
+            score = score + level;
+            score_keeper.text('Score: ' + score);
+            console.log(position_9.left)
+            $('#line9').detach();
+        }
     })
 
-    setInterval(function() {
-        var trackScore = function() {
-            score_keeper.text('Score: ' + score);
-        }
-    },5000)
+
 
 
     /* Function Calls */
@@ -680,5 +774,4 @@ jQuery(function() {
     burnCity();
     clearLaunchers();
     sayGameOver();
-    trackScore();
 });
