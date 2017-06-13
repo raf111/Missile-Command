@@ -7,7 +7,7 @@ jQuery(function() {
     var land_page_removed = 0;
     var score = 0;
     var high_score = 0;
-    var level = 5;
+    var level = 1;
     var line_speed = 10000 / (level * 0.5) + 5000;
     var cities = 6;
     var nextLine = 1000 / level;
@@ -258,12 +258,14 @@ jQuery(function() {
 
     var getScorePage = function() {
         body.append(score_page);
+        score = 0;
+        level = 1;
         score_title.text('Your score: ' + score + '!');
         game_info.text('Level: ' + level + '\n \n Cities Intact: ' + cities + '\n \n Your High Score: ' + high_score);
         setTimeout(function() {
             removeScorePage();
             createGame();
-        }, 1000)
+        }, 3000)
         score_page.append(back_btn);
         back_btn.css({ transform: 'translateY(-600px)' });
         $(back_btn).click(function() {
@@ -763,10 +765,11 @@ jQuery(function() {
                         level_page.detach();
                         body.append(game_page);
                     }, 3000)
-                }, 1000)
+                }, 2000)
 
                 counter = 0;
                 need_new_level = false;
+                clearInterval(clearence_checker);	
             }
         })
     }
