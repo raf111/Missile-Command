@@ -7,7 +7,7 @@ jQuery(function() {
     var land_page_removed = 0;
     var score = 0;
     var high_score = 0;
-    var level = 1;
+    var level = 5;
     var line_speed = 10000 / (level * 0.5) + 5000;
     var cities = 6;
     var nextLine = 1000 / level;
@@ -17,6 +17,16 @@ jQuery(function() {
     var end_of_game;
     var checkCounter;
     var menu_box_interval;
+
+    var line_1_detached = false;
+    var line_2_detached = false;
+    var line_3_detached = false;
+    var line_4_detached = false;
+    var line_5_detached = false;
+    var line_6_detached = false;
+    var line_7_detached = false;
+    var line_8_detached = false;
+    var line_9_detached = false;
 
 
     /* Variable References */
@@ -290,6 +300,71 @@ jQuery(function() {
         score_page.detach();
     }
 
+    var enemyFire = function() {
+        $(game_box).click(function() {
+            var line_wait = nextLine * 8;
+            setTimeout(function() {
+                $('#line1').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 6;
+            setTimeout(function() {
+                $('#line2').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 7;
+            setTimeout(function() {
+                $('#line3').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            setTimeout(function() {
+                $('#line4').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, nextLine)
+
+            var line_wait = nextLine * 4;
+            setTimeout(function() {
+                $('#line5').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            setTimeout(function() {
+                $('#line6').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, 0)
+
+            var line_wait = nextLine * 9;
+            setTimeout(function() {
+                $('#line7').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 2;
+            setTimeout(function() {
+                $('#line8').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 3;
+            setTimeout(function() {
+                $('#line9').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+        });
+    }
+
     var bringInGameMenu = function() {
         $(game_menu_btn).click(function() {
             menu_box_interval = setInterval(function() {
@@ -335,6 +410,70 @@ jQuery(function() {
     }
 
     var getToGame = function() {
+
+        $(game_box).click(function() {
+            var line_wait = nextLine * 8;
+            setTimeout(function() {
+                $('#line1').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 6;
+            setTimeout(function() {
+                $('#line2').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 7;
+            setTimeout(function() {
+                $('#line3').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            setTimeout(function() {
+                $('#line4').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, nextLine)
+
+            var line_wait = nextLine * 4;
+            setTimeout(function() {
+                $('#line5').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            setTimeout(function() {
+                $('#line6').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, 0)
+
+            var line_wait = nextLine * 9;
+            setTimeout(function() {
+                $('#line7').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 2;
+            setTimeout(function() {
+                $('#line8').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+
+            var line_wait = nextLine * 3;
+            setTimeout(function() {
+                $('#line9').animate({
+                    height: "1030px"
+                }, line_speed)
+            }, line_wait)
+        });
+
         $('#1').click(function() {
             removeLandingPage();
             if (score > high_score) {
@@ -457,7 +596,7 @@ jQuery(function() {
 
     var burnCity = function() {
         var attack_one = setInterval(function() {
-            var line_1_height = $('#line1').height();
+        	var line_1_height = $('#line1').height();
             //console.log(line_1_height);
             if (line_1_height > 515) {
                 silo_1.css({
@@ -469,7 +608,7 @@ jQuery(function() {
         })
 
         var attack_two = setInterval(function() {
-            var line_2_height = $('#line2').height();
+        	var line_2_height = $('#line2').height();
             //console.log(line_2_height);
             if (line_2_height > 515) {
                 $('#city_1').css({
@@ -481,8 +620,9 @@ jQuery(function() {
             }
         })
 
+        
         var attack_three = setInterval(function() {
-            var line_3_height = $('#line3').height();
+        	var line_3_height = $('#line3').height();
             //console.log(line_3_height);
             if (line_3_height > 515) {
                 $('#city_2').css({
@@ -494,9 +634,9 @@ jQuery(function() {
             }
         })
 
-
+        
         var attack_four = setInterval(function() {
-            var line_4_height = $('#line4').height();
+        	var line_4_height = $('#line4').height();
             //console.log(line_4_height);
             if (line_4_height > 515) {
                 $('#city_3').css({
@@ -570,6 +710,24 @@ jQuery(function() {
                 clearInterval(attack_nine);
             }
         })
+
+        var fire_gone = setInterval(function() {
+            var line_1_height = $('#line1').height();
+            var line_2_height = $('#line2').height();
+            var line_3_height = $('#line3').height();
+            var line_4_height = $('#line4').height();
+            var line_5_height = $('#line5').height();
+            var line_6_height = $('#line6').height();
+            var line_7_height = $('#line7').height();
+            var line_8_height = $('#line8').height();
+            var line_9_height = $('#line9').height();
+
+            if ((line_1_height > 515 || line_1_detached === true) && (line_2_height > 515 || line_2_detached === true) && (line_3_height > 515 || line_3_detached === true) && (line_4_height > 515 || line_4_detached === true) && (line_5_height > 515 || line_5_detached === true) && (line_6_height > 515 || line_6_detached === true) && (line_7_height > 515 || line_7_detached === true) && (line_8_height > 515 || line_8_detached === true) && (line_9_height > 515 || line_9_detached === true)) {
+                need_new_level = true;
+                clearInterval(fire_gone);
+            }
+        }, 100)
+
     }
 
     var clearLaunchers = function() {
@@ -613,70 +771,7 @@ jQuery(function() {
         })
     }
 
-    var enemyFire = function() {
-        $(game_box).click(function() {
-            var line_wait = nextLine * 8;
-            setTimeout(function() {
-                $('#line1').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
 
-            var line_wait = nextLine * 6;
-            setTimeout(function() {
-                $('#line2').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
-
-            var line_wait = nextLine * 7;
-            setTimeout(function() {
-                $('#line3').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
-
-            setTimeout(function() {
-                $('#line4').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, nextLine)
-
-            var line_wait = nextLine * 4;
-            setTimeout(function() {
-                $('#line5').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
-
-            setTimeout(function() {
-                $('#line6').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, 0)
-
-            var line_wait = nextLine * 9;
-            setTimeout(function() {
-                $('#line7').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
-
-            var line_wait = nextLine * 2;
-            setTimeout(function() {
-                $('#line8').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
-
-            var line_wait = nextLine * 3;
-            setTimeout(function() {
-                $('#line9').animate({
-                    height: "1030px"
-                }, line_speed)
-            }, line_wait)
-        });
-    }
 
     var explosion = $('<div>');
     explosion.addClass('explosion');
@@ -704,59 +799,69 @@ jQuery(function() {
         var position_8 = $('#line8').position();
         var position_9 = $('#line9').position();
 
-        if (event.pageX > position_1.left - 50 && event.pageX < position_1.left + 50) {
+        if (line_1_detached === false && event.pageX > position_1.left - 50 && event.pageX < position_1.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_1.left)
             $('#line1').detach();
+            line_1_detached = true;
         }
-        if (event.pageX > position_2.left - 50 && event.pageX < position_2.left + 50) {
+        if (line_2_detached === false && event.pageX > position_2.left - 50 && event.pageX < position_2.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_2.left)
             $('#line2').detach();
+            line_2_detached = true;
         }
-        if (event.pageX > position_3.left - 50 && event.pageX < position_3.left + 50) {
+        if (line_3_detached === false && event.pageX > position_3.left - 50 && event.pageX < position_3.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_3.left)
             $('#line3').detach();
+            line_3_detached = true;
         }
-        if (event.pageX > position_4.left - 50 && event.pageX < position_4.left + 50) {
+        if (line_4_detached === false && event.pageX > position_4.left - 50 && event.pageX < position_4.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_4.left)
             $('#line4').detach();
+            line_4_detached = true;
         }
-        if (event.pageX > position_5.left - 50 && event.pageX < position_5.left + 50) {
+        if (line_5_detached === false && event.pageX > position_5.left - 50 && event.pageX < position_5.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_5.left)
             $('#line5').detach();
+            line_5_detached = true;
         }
-        if (event.pageX > position_6.left - 50 && event.pageX < position_6.left + 50) {
+        if (line_6_detached === false && event.pageX > position_6.left - 50 && event.pageX < position_6.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_6.left)
             $('#line6').detach();
+            line_6_detached = true;
         }
-        if (event.pageX > position_7.left - 50 && event.pageX < position_7.left + 50) {
+        console.log(position_7);
+        if (line_7_detached === false && event.pageX > position_7.left - 50 && event.pageX < position_7.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_7.left)
             $('#line7').detach();
+            line_7_detached = true;
         }
-        if (event.pageX > position_8.left - 50 && event.pageX < position_8.left + 50) {
+        if (line_8_detached === false && event.pageX > position_8.left - 50 && event.pageX < position_8.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_8.left)
             $('#line8').detach();
+            line_8_detached = true;
         }
-        if (event.pageX > position_9.left - 50 && event.pageX < position_9.left + 50) {
+        if (line_9_detached === false && event.pageX > position_9.left - 50 && event.pageX < position_9.left + 50) {
             score = score + level;
             score_keeper.text('Score: ' + score);
             console.log(position_9.left)
             $('#line9').detach();
+            line_9_detached = true;
         }
     })
 
